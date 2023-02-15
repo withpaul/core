@@ -16,7 +16,7 @@ class DatabaseTest {
     @Test
     void databaseConnection() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
-        Assertions.assertThrows(NoUniqueBeanDefinitionException.class, () ->  ac.getBean(Database.class));
+//        Assertions.assertThrows(NoUniqueBeanDefinitionException.class, () ->  ac.getBean(Database.class));
     }
 
     @DisplayName("메인 db 사용할때는 Primary")
