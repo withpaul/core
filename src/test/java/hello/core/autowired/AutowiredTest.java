@@ -1,5 +1,6 @@
 package hello.core.autowired;
 
+import hello.core.AutoAppConfig;
 import hello.core.member.Member;
 import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,12 @@ public class AutowiredTest {
     void requiredDefaultTrue() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(Test.class);
         ac.getBean(Test.class);
+    }
+
+    @org.junit.jupiter.api.Test
+    @DisplayName("오토앱컨피크를 이용하여 OrderServiceImpl을 테스트한다. 생성자가 1나이면 Autowired를 하고, 2개이면 에러남?")
+    void testAutoAppConfig() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AutoAppConfig.class);
     }
 
     static class Test {

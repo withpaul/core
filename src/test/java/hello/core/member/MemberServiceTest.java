@@ -24,7 +24,6 @@ class MemberServiceTest {
         Member member2 = memberService.findMember(1L);
         // then
         Assertions.assertThat(member).isEqualTo(member2);
-
     }
 
     @Test
