@@ -2,20 +2,26 @@ package hello.core.autowired;
 
 import hello.core.AutoAppConfig;
 import hello.core.member.Member;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.springframework.beans.factory.UnsatisfiedDependencyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.lang.Nullable;
 
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 public class AutowiredTest {
 
     @org.junit.jupiter.api.Test
     @DisplayName("autowired는 required default가 true이기 떄문에 없는 빈 호출하면 예외발생한다")
     void requiredDefaultTrue() {
-        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(Test.class);
-        ac.getBean(Test.class);
+        assertThrows(
+                UnsatisfiedDependencyException.class,
+                () -> new AnnotationConfigApplicationContext(Test.class)
+        );
     }
 
     @org.junit.jupiter.api.Test
