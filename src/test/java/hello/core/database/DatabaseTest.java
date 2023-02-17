@@ -1,15 +1,11 @@
 package hello.core.database;
 
 import hello.core.AutoAppConfig;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
     @DisplayName("빈이 2개 조회되기 때문에 Primary 또는 Qualifier 없이 할 경우 예외 터진다.")
