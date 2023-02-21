@@ -16,7 +16,7 @@ class LifeCycleBeanTest {
 
     @Configuration
     static class LifeCycleConfiguration {
-        @Bean(initMethod = "init", destroyMethod = "close")
+        @Bean
         LifeCycleBean lifeCycleBean() {
             LifeCycleBean lifeCycleBean = new LifeCycleBean();
             lifeCycleBean.setUrl("afreecatv.com");

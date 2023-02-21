@@ -1,5 +1,8 @@
 package hello.core.lifecycle;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class LifeCycleBean {
 
     private String url;
@@ -24,11 +27,13 @@ public class LifeCycleBean {
         System.out.println("lifeCycleBean.disconnect:" + url);
     }
 
+    @PreDestroy
     public void close() throws Exception {
         System.out.println("LifeCycleBean.close");
         disconnect();
     }
 
+    @PostConstruct
     public void init() throws Exception {
         System.out.println("LifeCycleBean.init");
         connect();
