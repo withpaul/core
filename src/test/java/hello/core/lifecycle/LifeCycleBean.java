@@ -1,9 +1,6 @@
 package hello.core.lifecycle;
 
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
-
-public class LifeCycleBean implements InitializingBean, DisposableBean {
+public class LifeCycleBean {
 
     private String url;
 
@@ -27,15 +24,13 @@ public class LifeCycleBean implements InitializingBean, DisposableBean {
         System.out.println("lifeCycleBean.disconnect:" + url);
     }
 
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("LifeCycleBean.destroy");
+    public void close() throws Exception {
+        System.out.println("LifeCycleBean.close");
         disconnect();
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("LifeCycleBean.afterPropertiesSet");
+    public void init() throws Exception {
+        System.out.println("LifeCycleBean.init");
         connect();
         call();
     }
