@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,19 +29,19 @@ public class SingletonBeanWithPrototypeBeanSolutionTest {
 
     @Scope("singleton")
     static class Singleton {
-        private final ObjectProvider<Prototype> prototypeBeanProvider;
+        private final Provider<Prototype> prototypeBeanProvider;
 
-        public Singleton(ObjectProvider<Prototype> prototypeBeanProvider) {
+        public Singleton(Provider<Prototype> prototypeBeanProvider) {
             this.prototypeBeanProvider = prototypeBeanProvider;
         }
 
-        public ObjectProvider<Prototype> getPrototype() {
+        public Provider<Prototype> getPrototype() {
             return prototypeBeanProvider;
         }
 
 
         public int logic() {
-            Prototype prototype = prototypeBeanProvider.getObject();
+            Prototype prototype = prototypeBeanProvider.get();
             prototype.addCount();
             return prototype.getCount();
         }
