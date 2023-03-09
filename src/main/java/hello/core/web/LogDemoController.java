@@ -16,12 +16,12 @@ public class LogDemoController {
     private final LogDemoService logDemoService;
 
     // myLogger를 주입받는게아니라 myLogger를 찾을수있는 dependecy lookup 할수있는 provider를 주입받는거임
-    private final ObjectProvider<MyLogger> myLoggerObjectProvider;
+    private final MyLogger myLogger;
+
     @RequestMapping("log-demo")
     @ResponseBody
     public String logDemo(HttpServletRequest request) throws InterruptedException {
         String requestURL = request.getRequestURL().toString();
-        MyLogger myLogger = myLoggerObjectProvider.getObject();
         myLogger.setRequestURL(requestURL);
         myLogger.log("controller test");
         Thread.sleep(1000);
